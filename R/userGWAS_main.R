@@ -83,7 +83,8 @@
     print("TARGET 2!!")
     ##name rows like columns
     rownames(S_Fullrun) <- colnames(S_Fullrun)
-
+    
+    print("TARGET TARGET 1!!!")
     ##run the model. save failed runs and run model. warning and error functions prevent loop from breaking if there is an error.
     if(estimation == "DWLS"){
         if (!is.null(basemodel)) {
@@ -105,19 +106,20 @@
         }
 
     }
+    print("TARGET TARGET 2!!!")
     if (returnlavmodel) {
         return(Model1_Results)
     }
-
+    print("TARGET TARGET 3!!!")
     test$warning$message[1] <- ifelse(is.null(test$warning$message), test$warning$message[1] <- 0, test$warning$message[1])
-
+    print("TARGET TARGET 4!!!")
     if(class(test$value)[1] == "lavaan" & grepl("solution has NOT",  as.character(test$warning)) != TRUE){
         Model_Output <- parTable(Model1_Results)
 
         resid_var1 <- subset(Model_Output, Model_Output$op == "~~" & Model_Output$free != 0 & Model_Output$lhs == Model_Output$rhs)
 
         resid_var2 <- min(resid_var1$est)}else{resid_var2 <- -9}
-
+    print("TARGET TARGET 5!!!")
     if(resid_var2 > 0){
 
         #pull the delta matrix (this doesn't depend on N)
