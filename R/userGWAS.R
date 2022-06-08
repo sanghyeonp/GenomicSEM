@@ -182,6 +182,7 @@ userGWAS <- function(covstruc=NULL, SNPs=NULL, estimation="DWLS", model="", prin
   rm(SNPs)
   f <- nrow(beta_SNP)
   # Run a single SNP to obtain base Lavaan model object
+  print("userGWAS: TARGET1")
   LavModel1 <- .userGWAS_main(i=1, cores=1, n_phenotypes, n=1, I_LD, V_LD, S_LD, std.lv, varSNPSE2, order, SNPs2, beta_SNP, SE_SNP, varSNP, GC,
       coords, smooth_check, TWAS, printwarn, toler, estimation, sub, Model1, df, npar, returnlavmodel=TRUE)
   if(!parallel){
@@ -204,6 +205,7 @@ userGWAS <- function(covstruc=NULL, SNPs=NULL, estimation="DWLS", model="", prin
           cat(paste0("Running Model: ", i, "\n"))
         }
       }
+      print("userGWAS: TARGET2")
       final2 <- .userGWAS_main(i, cores=1, n_phenotypes, 1, I_LD, V_LD, S_LD, std.lv, varSNPSE2, order, SNPs2, beta_SNP, SE_SNP, varSNP, GC,
           coords, smooth_check, TWAS, printwarn, toler, estimation, sub, Model1, df, npar, basemodel=LavModel1)
       final2$i <- NULL
