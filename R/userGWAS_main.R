@@ -126,12 +126,13 @@
         ##weight matrix from stage 2
         S2.W <- lavInspect(Model1_Results, "WLS.V")
 
+        print("TARGET 2.1!!")
         #the "bread" part of the sandwich is the naive covariance matrix of parameter estimates that would only be correct if the fit function were correctly specified
         bread <- solve(t(S2.delt)%*%S2.W%*%S2.delt,tol=toler)
-
+        print("TARGET 2.2!!")
         #create the "lettuce" part of the sandwich
         lettuce <- S2.W%*%S2.delt
-
+        print("TARGET 2.3!!")
         #ohm-hat-theta-tilde is the corrected sampling covariance matrix of the model parameters
         Ohtt <- bread %*% t(lettuce)%*%V_full_Reorder%*%lettuce%*%bread
 
@@ -155,7 +156,7 @@
 
                 #vector of indirect effect derivatives evaluated @ parameter estimates
                 Jac <- lav_func_jacobian_complex(func = func, x = x)
-
+                print("TARGET 2.4!!")
                 #replace vcov here with our corrected one. this gives parameter variance
                 var.ind <- Jac %*% vcov %*% t(Jac)
 
@@ -178,7 +179,7 @@
                 }
             }
         }
-
+        print("TARGET 2.5!!")
         #code for computing SE of ghost parameter (e.g., indirect effect in mediation model)
         if(estimation == "ML"){
             if(":=" %in% Model_Output$op){
