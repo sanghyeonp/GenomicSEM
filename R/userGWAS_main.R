@@ -1,6 +1,9 @@
 .userGWAS_main <- function(i, cores, k, n, I_LD, V_LD, S_LD, std.lv, varSNPSE2, order, SNPs2, beta_SNP, SE_SNP,
                            varSNP, GC, coords, smooth_check, TWAS, printwarn, toler, estimation, sub, Model1,
                            df, npar, utilfuncs=NULL, basemodel=NULL, returnlavmodel=FALSE) {
+
+    print("THIS IS EDITED VERSION!!")
+
     # utilfuncs contains utility functions to enable this code to work on PSOC clusters (for Windows)
     if (!is.null(utilfuncs)) {
         for (j in names(utilfuncs)) {
