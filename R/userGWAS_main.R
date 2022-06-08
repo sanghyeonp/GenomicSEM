@@ -291,6 +291,11 @@
     }
     if(smooth_check)
       new_names <- c(new_names, "Z_smooth")
+
+    print(new_names)
+    print(length(new_names))
+    print(colnames(final2))
+    print(length(colnames(final2)))
     colnames(final2) <- new_names
 
     return(final2)
