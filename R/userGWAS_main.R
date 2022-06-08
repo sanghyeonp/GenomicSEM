@@ -107,6 +107,8 @@
 
     }
     print("TARGET TARGET 2!!!")
+    print(returnlavmodel)
+    
     if (returnlavmodel) {
         return(Model1_Results)
     }
