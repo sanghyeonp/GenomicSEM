@@ -71,6 +71,8 @@
         }
     }
 
+    print("TARGET 1!!")
+
     #name the columns
     if(!(TWAS)){
         colnames(S_Fullrun) <- c("SNP", colnames(S_LD))
@@ -78,6 +80,7 @@
         colnames(S_Fullrun) <- c("Gene", colnames(S_LD))
     }
 
+    print("TARGET 2!!")
     ##name rows like columns
     rownames(S_Fullrun) <- colnames(S_Fullrun)
 
@@ -202,6 +205,8 @@
         Eig2 <- diag((ncol(S_Fullrun)*(ncol(S_Fullrun)+1))/2)
         diag(Eig2) <- Eig
 
+        print("TARGET 3!!")
+
         #Pull P1 (the eigen vectors of V_eta)
         P1 <- eigen(V_full)$vectors
 
@@ -264,6 +269,8 @@
             final$error <- ifelse(class(test$value) == "lavaan", 0, as.character(test$value$message))[1]
             final$warning <- ifelse(class(test$warning) == 'NULL', 0, as.character(test$warning$message))[1]
         }
+
+        print("TARGET 4!!")
         ##combine with rs-id, BP, CHR, etc.
         final2 <- cbind(n + (i-1) * cores,SNPs2[i,],final,row.names=NULL)
 
@@ -287,11 +294,15 @@
         ##combine results with SNP, CHR, BP, A1, A2 for particular model
         final2 <- cbind(n + (i-1) * cores, SNPs2[i,], final, row.names=NULL)
     }
+
+
+    print("TARGET 5!!")
     if(TWAS){
         new_names <- c("i", "Gene","Panel","HSQ", "lhs", "op", "rhs", "free", "label", "est", "SE", "Z_Estimate", "Pval_Estimate","chisq","chisq_df","chisq_pval", "AIC","error","warning")
     } else {
         new_names <- c("i", "SNP", "CHR", "BP", "MAF", "A1", "A2", "lhs", "op", "rhs", "free", "label", "est", "SE", "Z_Estimate", "Pval_Estimate","chisq","chisq_df","chisq_pval", "AIC","error","warning")
     }
+    print("TARGET 6!!")
     if(smooth_check)
       new_names <- c(new_names, "Z_smooth")
 
